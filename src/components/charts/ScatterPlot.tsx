@@ -108,7 +108,7 @@ const ScatterPlot = (props: any) => {
         const captions = [getCaption()];
         const bboxs = [[boundaryPoints]];
 
-        return {bboxs, captions}
+        return {bboxs, captions, insightType}
     }
 
     const getClusterBBox = () => {
@@ -150,7 +150,7 @@ const ScatterPlot = (props: any) => {
 
         const captions = [getCaption()];
         const bboxs = [boundaryPoints];
-        return {bboxs, captions}
+        return {bboxs, captions, insightType}
     }
 
     const getBBox = () => {

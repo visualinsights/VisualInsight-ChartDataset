@@ -1,9 +1,9 @@
 import React from 'react';
-import {FundOutlined} from '@ant-design/icons';
+import {CodeSandboxOutlined} from '@ant-design/icons';
 
 const Header = () => {
     return <div className={"Header"}>
-        <FundOutlined width={80} height={80}/>
+        <CodeSandboxOutlined style={{fontSize: 25}}/>
         <div style={{marginLeft: 10}}>Visual Insight Dataset Generator</div>
     </div>
 };

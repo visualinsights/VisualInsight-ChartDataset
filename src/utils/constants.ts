@@ -13,6 +13,10 @@ export const xLabels = [Month, Week, PeopleName, Charactors, ProductName, Colors
 export const barInsights = ["extreme", "evenness"]; // "compare"
 export const lineInsights = ["ascending", "descending", "outlier"]; // "positive relation", "negative relation"
 export const scatterInsight = ["cluster", "positive relation", "negative relation"]; //  "outlier",
+export const pieInsight = ["domain"];
+
+export const allInsights = ["maximal", "minimum", "evenness"]
+    .concat(lineInsights, scatterInsight, pieInsight);
 
 export const colorList = [
     "#5470c6",

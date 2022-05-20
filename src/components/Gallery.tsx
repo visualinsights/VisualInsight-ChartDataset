@@ -1,7 +1,7 @@
 import React, {useMemo} from "react";
 import {Card, Button} from "antd";
 import {convertCanvasToBlob, randomChoice} from "../utils/utils";
-import {barInsights, lineInsights, scatterInsight} from "../utils/constants";
+import {allInsights, barInsights, lineInsights, pieInsight, scatterInsight} from "../utils/constants";
 import {getBarData, getLineData, getPieChartData, getScatterData} from "../utils/chartDataUtils";
 import BarChart from "./charts/BarChart";
 import LineChart from "./charts/LineChart";
@@ -18,9 +18,10 @@ const Gallery = () => {
 
     const SPLIT = useMemo(() => {
         let SPLIT: string[] = [];
-        SPLIT = SPLIT.concat(new Array(split[0]).fill("train"));
-        SPLIT = SPLIT.concat(new Array(split[1]).fill("val"));
-        SPLIT = SPLIT.concat(new Array(split[2]).fill("test"));
+        ["train", "val", "test"].forEach((name, i) => {
+            SPLIT = SPLIT.concat(new Array(split[i]).fill(name));
+        })
+
         return SPLIT;
     }, [split])
 
@@ -28,7 +29,7 @@ const Gallery = () => {
         const downloadUtil = new DownloadUtil();
         const allBBoxs: any[] = [];
 
-        // 创建三个文件夹
+        // create folders
         downloadUtil.addFolderInZip("train");
         downloadUtil.addFolderInZip("val");
         downloadUtil.addFolderInZip("test");
@@ -38,17 +39,19 @@ const Gallery = () => {
             const split = randomChoice(SPLIT);
             const type = chartList[i];
 
-            // 保存图片
+            // save image
             const canvas = canvasList[i];
             const blob: any = convertCanvasToBlob(canvas);
+
             downloadUtil.addFileInZip(`${type}-${base + i}.png`, blob, split);
 
             // 保存bbox和caption
-            const {bboxs, captions} = ref.current.getBBox();
+            const {bboxs, captions, insightType} = ref.current.getBBox();
             allBBoxs.push({
                 type: "bar",
                 split,
-                pairs: bboxs.map((box: any, j: any) => {
+                pairs: bboxs.map((box: any) => {
+                    const j = allInsights.findIndex((insight) => insight === insightType);
                     return {
                         heatmap: `${type}-${base + i}-${j}.png`,
                         bbox: box,
@@ -112,10 +115,12 @@ const Gallery = () => {
 
                     /* ---piechart--- */
                     if (chartList[i] === "PieChart") {
+                        const insightType = randomChoice(pieInsight);
                         const {xLabel, data} = getPieChartData();
                         return <PieChart
                             onRef={ref}
                             key={"piechart-" + i}
+                            insightType={insightType}
                             xLabel={xLabel}
                             data={data}/>
                     }

@@ -3,6 +3,7 @@ import {findArrMax} from "../../utils/utils";
 
 const echarts = require("echarts");
 const PieChart = (props: any) => {
+    const {xLabel, data, insightType} = props;
     const [mChart, setMChart] = useState(null);
     const currentNode = useRef(null);
 
@@ -15,7 +16,6 @@ const PieChart = (props: any) => {
     })
 
     const renderChart = () => {
-        const {xLabel, data} = props;
         const option = {
             backgroundColor: '#fff',
             series: [
@@ -66,7 +66,7 @@ const PieChart = (props: any) => {
         const bboxs = [[fixations]];
         const captions = ["This value is the dominant value in the pie chart."];
 
-        return {bboxs, captions}
+        return {bboxs, captions, insightType}
     }
 
     return <div className={"PieChart"}>

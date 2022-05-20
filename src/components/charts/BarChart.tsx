@@ -164,7 +164,7 @@ const BarChart = (props: any) => {
         ])
         captions.push(getCaption("min", mxIndex));
 
-        return {bboxs, captions};
+        return {bboxs, captions, insightType: ["maximal", "minimum"]};
     }
 
     // evenness insight
@@ -208,7 +208,7 @@ const BarChart = (props: any) => {
         }
         const captions = [getCaption()];
 
-        return {bboxs, captions};
+        return {bboxs, captions, insightType};
     }
 
     const getBBox = () => {
