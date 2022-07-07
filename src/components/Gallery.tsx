@@ -48,14 +48,14 @@ const Gallery = () => {
             // 保存bbox和caption
             const {bboxs, captions, insightType} = ref.current.getBBox();
             allBBoxs.push({
-                type: "bar",
+                type,
                 split,
-                pairs: bboxs.map((box: any) => {
-                    const j = allInsights.findIndex((insight) => insight === insightType);
+                pairs: bboxs.map((box: any, index: number) => {
+                    const j = allInsights.findIndex((insight) => insight === insightType[index]);
                     return {
                         heatmap: `${type}-${base + i}-${j}.png`,
                         bbox: box,
-                        caption: captions[j]
+                        caption: captions[index]
                     }
                 })
             });

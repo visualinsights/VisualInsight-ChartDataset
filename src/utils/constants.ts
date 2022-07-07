@@ -1,5 +1,6 @@
 export const allChartTypes = ["BarChart", "LineChart", "ScatterPlot", "PieChart"]
 
+
 const Month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",];
 const Week = ["Mon", "Tue", "Wed", "Thi", "Fri", "Sat", "Sun"];
 const PeopleName = ["John", "Michael", "KangKang", "Jane", "Maria"];

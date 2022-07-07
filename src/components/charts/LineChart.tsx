@@ -133,7 +133,7 @@ const LineChart = (props: any) => {
             return templates;
         }
         const captions = [getCaption()];
-        return {bboxs, captions, insightType}
+        return {bboxs, captions, insightType: [insightType]}
     }
 
     const outlierBBox = () => {
@@ -175,7 +175,7 @@ const LineChart = (props: any) => {
         }
 
         const captions = [getCaption()];
-        return {bboxs, captions, insightType}
+        return {bboxs, captions, insightType: [insightType]}
     }
 
     return <div className={"LineChart"}>

@@ -66,7 +66,7 @@ const PieChart = (props: any) => {
         const bboxs = [[fixations]];
         const captions = ["This value is the dominant value in the pie chart."];
 
-        return {bboxs, captions, insightType}
+        return {bboxs, captions, insightType:[insightType]}
     }
 
     return <div className={"PieChart"}>

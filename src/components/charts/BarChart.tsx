@@ -162,7 +162,7 @@ const BarChart = (props: any) => {
             convertBboxToPosition(boundingRect[mnIndex]),
             labels[mnIndex]
         ])
-        captions.push(getCaption("min", mxIndex));
+        captions.push(getCaption("min", mnIndex));
 
         return {bboxs, captions, insightType: ["maximal", "minimum"]};
     }
@@ -208,7 +208,7 @@ const BarChart = (props: any) => {
         }
         const captions = [getCaption()];
 
-        return {bboxs, captions, insightType};
+        return {bboxs, captions, insightType: [insightType]};
     }
 
     const getBBox = () => {

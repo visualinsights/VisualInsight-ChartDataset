@@ -5,6 +5,7 @@ import _ from "lodash";
 // bar chart data
 export const getBarData = (insightType: string) => {
     const xLabel = randomChoice(xLabels);
+    // const xLabel = [1, 2, 3, 4, 5, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
     let data = [];
     if (insightType === "evenness") {
         const range = 3 + Math.random() * 3;
@@ -94,7 +95,7 @@ export const getScatterData = (insightType: string) => {
         const centerPoints = randomChoice(centerPointsList);
 
         params.clusters = centerPoints.map((point: any) => {
-            const num = Math.floor(20 + Math.random() * 30);
+            const num = Math.floor(25 + Math.random() * 30);
             for (let i = 0; i < num; i++) {
                 let offset = Math.random() * 10;
                 let signal = Math.random() > 0.5 ? 1 : -1;
@@ -106,7 +107,6 @@ export const getScatterData = (insightType: string) => {
             }
             return num;
         })
-
     }
 
     return {data, params};
@@ -122,4 +122,14 @@ export const getPieChartData = () => {
     data.push(_.sum(data) + 10);
     data = _.shuffle(data);
     return {xLabel, data};
+}
+
+// complex bar chart data
+export const getComplexBarData = () => {
+
+}
+
+// complex scatter plot data
+export const getComplexScatterData = () => {
+
 }
